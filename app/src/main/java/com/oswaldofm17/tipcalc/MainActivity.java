@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!strInputTotal.isEmpty()) {
             double total = Double.parseDouble(strInputTotal);
-            int tipPercentage = getTipPrecentage();
+            int tipPercentage = getTipPercentage();
             double tip = total * (tipPercentage/100d);
             String strTip = String.format(getString(R.string.global_message_tip), tip);
             txtTip.setVisibility(View.VISIBLE);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         hideKeyboard();
         handleTipChange(-TIP_STEP_CHANGE);
     }
-    public int getTipPrecentage() {
+    public int getTipPercentage() {
 
         int tipPercentage = DEFAULT_TIP_PERCENTAGE;
         String strInputTipPercentage = inputPercentage.getText().toString().trim();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleTipChange(int change) {
-        int tipPercentage = getTipPrecentage();
+        int tipPercentage = getTipPercentage();
         tipPercentage += change;
 
         if(tipPercentage > 0) {
