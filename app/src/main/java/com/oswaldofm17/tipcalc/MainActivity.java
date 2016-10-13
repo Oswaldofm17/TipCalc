@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,7 +61,40 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnSubmit)
     public void handleSubmit() {
         hideKeyboard();
+        String strInputTotal = inputBill.getText().toString().trim();
+
+        if(!strInputTotal.isEmpty()) {
+            double total = Double.parseDouble(strInputTotal);
+            int tipPercentage = getTipPrecentage();
+            double tip = total * (tipPercentage/100d);
+            String strTip = String.format(getString(R.string.global_message_tip), tip);
+            txtTip.setVisibility(View.VISIBLE);
+            txtTip.setText(strTip);
+        }
+
     }
+    public void handleClickIncrease() {
+        // Cuando des click a + debe llamar a handleTipChange y sumar 1
+    }
+    public void handleClickDecrease() {
+        // Cuando des click a - debe llamar a handleTipChange y restar 1
+    }
+    public int getTipPrecentage() {
+        // 1 Crear una variable tipPercentage en la que guardemos DEFAULT_TIP_CHANGE
+        // 2 Crear una variable String strInputTipPercentage que tome el valor del inputPercentage (No olviden el trim)
+        // 3 Verificar que la cadena no venga vacia
+        // 3a Si no Viene vacia sobreEscribir tipPercentage con el valor de strInputTipPercentage (No olviden convertirlo a entero)
+        // 3b inputPercentage.setText(String.valueOf(DEFAULT_TIP_PERCENTAGE));
+        // 4 Devolver el valor de tipPercentage
+        return DEFAULT_TIP_CHANGE;
+    }
+
+    public void handleTipChange(int change) {
+        // 1 Llamar a Get Tip Percentage (en una variable)
+        // 2 aplicar el incremento/decremento que viene en la variable change
+        // 3 si tipPercentage mayor que 0 entonces colocar el valor del incremento en el input de la vista
+    }
+
     private void hideKeyboard() {
         InputMethodManager inputManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
