@@ -1,5 +1,7 @@
 package com.oswaldofm17.tipcalc.activities;
 
+import java.util.Date;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,6 +26,9 @@ import butterknife.OnClick;
 
 import com.oswaldofm17.tipcalc.fragments.TipHistoryListFragment;
 import com.oswaldofm17.tipcalc.fragments.TipHistoryListFragmentListener;
+import com.oswaldofm17.tipcalc.models.TipRecord;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,10 +83,14 @@ public class MainActivity extends AppCompatActivity {
         if(!strInputTotal.isEmpty()) {
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentage();
-            double tip = total * (tipPercentage/100d);
-            String strTip = String.format(getString(R.string.global_message_tip), tip);
 
-            fragmentListener.action(strTip);
+            TipRecord record = new TipRecord();
+            record.setBill(total);
+            record.setTipPercentage(tipPercentage);
+            record.setTimestamp(new Date());
+
+            String strTip = String.format(getString(R.string.global_message_tip), record.getTip());
+            fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
