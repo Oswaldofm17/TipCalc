@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -23,10 +24,18 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
 
     private Context context;
     private List<TipRecord> dataset;
+    private OnItemClickListener onItemClickLister;
 
-    public TipAdapter(Context context, List<TipRecord> dataset) {
+    public TipAdapter(Context context, List<TipRecord> dataset, OnItemClickListener onItemClickListener) {
         this.context = context;
         this.dataset = dataset;
+        this.onItemClickLister = onItemClickListener;
+    }
+
+    public TipAdapter(Context context,OnItemClickListener onItemClickListener) {
+        this.context = context;
+        this.dataset = new ArrayList<TipRecord>();
+        this.onItemClickLister = onItemClickListener;
     }
 
     @Override
@@ -41,6 +50,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
         TipRecord element = dataset.get(position);
         String strTip = String.format(context.getString(R.string.global_message_tip), element.getTip());
         holder.txtContent.setText(strTip);
+        holder.setOnItemClickLister(element, onItemClickLister);
     }
 
     @Override
@@ -62,9 +72,20 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
             @Bind(R.id.txtContent)
             TextView txtContent;
 
-            public ViewHolder(View itemView) {
-                super(itemView);
-                ButterKnife.bind(this, itemView);
-            }
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
         }
+        public void setOnItemClickLister(final TipRecord element, final OnItemClickListener onItemClickListener){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onItemClickListener.onItemClick(element);
+                }
+            });
+
+        }
+
+    }
+
 }
