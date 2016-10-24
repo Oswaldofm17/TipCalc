@@ -130,6 +130,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @OnClick(R.id.btnClear)
+    public void handleClickClear() {
+        fragmentListener.clearList();
+    }
+
     private void hideKeyboard() {
         InputMethodManager inputManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
