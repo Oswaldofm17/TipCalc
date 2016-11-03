@@ -48,7 +48,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TipRecord element = dataset.get(position);
-        String strTip = String.format(context.getString(R.string.global_message_tip), element.getTip());
+        String strTip = String.format(context.getString(R.string.global_message_tip, element.getTip()));
         holder.txtContent.setText(strTip);
         holder.setOnItemClickLister(element, onItemClickLister);
     }
