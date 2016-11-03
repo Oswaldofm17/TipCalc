@@ -14,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import com.oswaldofm17.tipcalc.R;
-import com.oswaldofm17.tipcalc.models.TipRecord;
+import com.oswaldofm17.tipcalc.entity.TipRecord;
 
 /**
  * Created by oswaldofm on 10/23/16.

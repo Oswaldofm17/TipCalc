@@ -1,6 +1,6 @@
 package com.oswaldofm17.tipcalc.adapters;
 
-import com.oswaldofm17.tipcalc.models.TipRecord;
+import com.oswaldofm17.tipcalc.entity.TipRecord;
 
 /**
  * Created by oswaldofm on 10/24/16.

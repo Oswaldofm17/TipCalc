@@ -9,20 +9,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.oswaldofm17.tipcalc.R;
 import com.oswaldofm17.tipcalc.activities.TipDetailActivity;
 import com.oswaldofm17.tipcalc.adapters.OnItemClickListener;
 import com.oswaldofm17.tipcalc.adapters.TipAdapter;
-import com.oswaldofm17.tipcalc.models.TipRecord;
-
-import java.util.ArrayList;
+import com.oswaldofm17.tipcalc.entity.TipRecord;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

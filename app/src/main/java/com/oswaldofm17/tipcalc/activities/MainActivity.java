@@ -24,11 +24,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import com.oswaldofm17.tipcalc.fragments.TipHistoryListFragment;
 import com.oswaldofm17.tipcalc.fragments.TipHistoryListFragmentListener;
-import com.oswaldofm17.tipcalc.models.TipRecord;
-
-import java.util.Date;
+import com.oswaldofm17.tipcalc.entity.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
