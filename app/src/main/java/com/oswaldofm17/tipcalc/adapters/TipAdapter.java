@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 
 import com.oswaldofm17.tipcalc.R;
 import com.oswaldofm17.tipcalc.entity.TipRecord;
+import com.oswaldofm17.tipcalc.utils.TipUtils;
 
 /**
  * Created by oswaldofm on 10/23/16.
@@ -48,7 +49,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TipRecord element = dataset.get(position);
-        String strTip = String.format(context.getString(R.string.global_message_tip, element.getTip()));
+        String strTip = String.format(context.getString(R.string.global_message_tip, TipUtils.getTip(element)));
         holder.txtContent.setText(strTip);
         holder.setOnItemClickLister(element, onItemClickLister);
     }

@@ -18,6 +18,7 @@ import com.oswaldofm17.tipcalc.activities.TipDetailActivity;
 import com.oswaldofm17.tipcalc.adapters.OnItemClickListener;
 import com.oswaldofm17.tipcalc.adapters.TipAdapter;
 import com.oswaldofm17.tipcalc.entity.TipRecord;
+import com.oswaldofm17.tipcalc.utils.TipUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -68,9 +69,9 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void onItemClick(TipRecord tipRecord) {
         Intent intent = new Intent(getActivity(), TipDetailActivity.class);
-        intent.putExtra(TipDetailActivity.TIP_KEY, tipRecord.getTip());
+        intent.putExtra(TipDetailActivity.TIP_KEY, TipUtils.getTip(tipRecord));
         intent.putExtra(TipDetailActivity.BILL_TOTAL_KEY, tipRecord.getBill());
-        intent.putExtra(TipDetailActivity.DATE_KEY, tipRecord.getDateFormated());
+        intent.putExtra(TipDetailActivity.DATE_KEY, TipUtils.getDateFormated(tipRecord));
         startActivity(intent);
     }
 }

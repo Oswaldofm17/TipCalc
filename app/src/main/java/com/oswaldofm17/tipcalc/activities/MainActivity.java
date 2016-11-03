@@ -26,6 +26,7 @@ import butterknife.OnClick;
 
 import com.oswaldofm17.tipcalc.fragments.TipHistoryListFragmentListener;
 import com.oswaldofm17.tipcalc.entity.TipRecord;
+import com.oswaldofm17.tipcalc.utils.TipUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             record.setTipPercentage(tipPercentage);
             record.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message_tip), record.getTip());
+            String strTip = String.format(getString(R.string.global_message_tip), TipUtils.getTip(record));
             fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);
